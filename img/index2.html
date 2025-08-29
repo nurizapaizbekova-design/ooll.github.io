@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Платья - MILAN</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe6f5 40%, white 60%);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .ony, .axi {
+      padding: 10px 20px;
+      background-color: pink;
+      color: #9c0375;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .ony:hover, .axi:hover {
+      background-color: #ffb6c1;
+    }
+
+    .container {
+      position: relative;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      background: #ffe6f5;
+      padding: 10px 20px;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      border-radius: 19px;
+      color: #f50595;
+    }
+
+    .big-text {
+      position: absolute;
+      left: 20px;
+      top: 30px;
+      font-size: 160px;
+      font-weight: bold;
+      color: black;
+      opacity: 0.1;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .main-content {
+      margin-top: 120px;
+      padding-left: 50px;
+      max-width: 700px;
+    }
+
+    .main-content p, .quote {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #f50595;
+    }
+
+    .quote {
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .car-img {
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2px;
+      margin-left: 480px;
+      position: relative;
+    }
+
+    .car-img img {
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .arrow-button {
+      background: none;
+      border: none;
+      font-size: 30px;
+      color: #f50595;
+      cursor: pointer;
+      margin: 0 20px;
+      transition: transform 0.2s;
+    }
+
+    .arrow-button:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <button class="ony" onclick="location.href='kepki.html'">назад</button>
+  <button class="axi" onclick="location.href='milan.moda.html.html'">назад к главной</button>
+</header>
+
+<div class="container">
+  <div class="logo">MILAN.MODA</div>
+  <div class="big-text">MILAN</div>
+
+  <div class="main-content">
+    <p id="desc"></p>
+    <div class="quote" id="quote"></div>
+  </div>
+
+  <div class="car-img">
+    <button class="arrow-button" onclick="prev()">&larr;</button>
+    <img id="dressImg" src="uik.png" alt="Dress">
+    <button class="arrow-button" onclick="next()">&rarr;</button>
+  </div>
+</div>
+
+<script>
+  const dresses = [
+    {
+      img: 'uik.png',
+      desc: Цвет: Бордовый<br>Материал: Атлас, сетка<br>Размеры: S, M, L, XL<br>Особенности:<br>Эффектный корсетный лиф<br>Глубокий разрез на юбке<br>Шикарный облегающий крой<br>Удобная посадка и мягкая ткань,
+      quote: 'Элегантное вечернее платье с корсетным верхом, тонкими бретелями и разрезом.'
+    },
+    {
+      img: 'llk.png',
+      desc: Цвет: Шампань<br>Материал: Шёлк<br>Размеры: XS, S, M<br>Особенности:<br>Лёгкий блеск ткани<br>Отрытая спина<br>Длинный шлейф,
+      quote: 'Платье идеально для выпускного или торжественного мероприятия.'
+    },
+    {
+      img: 'dress3.png',
+      desc: Цвет: Нежно-розовый<br>Материал: Кружево<br>Размеры: M, L, XL<br>Особенности:<br>Декоративные рукава<br>Облегающий силуэт<br>Акцент на талии,
+      quote: 'Изысканный образ для романтического вечера или фотосессии.'
+    }
+  ];
+
+  let index = 0;
+
+  function renderDress() {
+    document.getElementById('dressImg').src = dresses[index].img;
+    document.getElementById('desc').innerHTML = dresses[index].desc;
+    document.getElementById('quote').innerText = dresses[index].quote;
+  }
+
+  function next() {
+    index = (index + 1) % dresses.length;
+    renderDress();
+  }
+
+  function prev() {
+    index = (index - 1 + dresses.length) % dresses.length;
+    renderDress();
+  }
+
+  renderDress(); // initial load
+</script>
+
+</body>
+</html>
